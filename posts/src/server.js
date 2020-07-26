@@ -1,7 +1,7 @@
 const express = require("express");
 const uuid = require("uuid").v4;
 const cors = require("cors");
-
+const axios = require("axios").default;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -15,7 +15,7 @@ app.get("/posts", (req, res) => {
   res.json(POSTS);
 });
 
-app.post("/posts", (req, res) => {
+app.post("/posts", async (req, res) => {
   const id = uuid();
   const { title } = req.body;
 
@@ -31,10 +31,26 @@ app.post("/posts", (req, res) => {
     title,
   };
 
+  await axios.post("http://localhost:5002/events", {
+    type: "post.created",
+    data: {
+      id,
+      title,
+    },
+  });
+
   return res.status(201).json({
     id,
     title,
   });
+});
+
+app.post("/events", (req, res) => {
+  if (req.body.type === "post.created") {
+    console.log("Event received >> ", req.body.type);
+  }
+
+  res.json({});
 });
 
 app.listen(4000, () => {
