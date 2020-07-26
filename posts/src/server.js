@@ -46,9 +46,7 @@ app.post("/posts", async (req, res) => {
 });
 
 app.post("/events", (req, res) => {
-  if (req.body.type === "post.created") {
-    console.log("Event received >> ", req.body.type);
-  }
+  console.log("Event received >> ", req.body.type);
 
   res.json({});
 });
