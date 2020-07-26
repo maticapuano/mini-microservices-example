@@ -47,9 +47,7 @@ app.post("/posts/:id/comments", async (req, res) => {
 });
 
 app.post("/events", (req, res) => {
-  if (req.body.type === "comment.created") {
-    console.log("Event received: >> ", req.body);
-  }
+  console.log("Event received: >> ", req.body.type);
 
   res.json({});
 });
