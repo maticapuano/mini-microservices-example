@@ -6,6 +6,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(cors({ origin: "*" }));
+
 const posts = {};
 
 app.get("/posts", (req, res) => {
