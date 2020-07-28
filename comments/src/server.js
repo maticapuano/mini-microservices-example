@@ -50,7 +50,7 @@ app.post("/posts/:id/comments", async (req, res) => {
 app.post("/events", async (req, res) => {
   console.log("Event received: >> ", req.body.type);
 
-  const { type, data, content } = req.body;
+  const { type, data } = req.body;
 
   if (type === "comment.moderated") {
     const { postId, id, status } = data;
@@ -69,7 +69,7 @@ app.post("/events", async (req, res) => {
         id,
         status,
         postId,
-        content,
+        content: data.content,
       },
     });
   }
