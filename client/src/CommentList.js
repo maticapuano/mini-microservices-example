@@ -5,7 +5,7 @@ export default ({ comments }) => {
     let content;
 
     //console.log(comment);
-    if ((comment.type = "approved")) {
+    if ((comment.status = "approved")) {
       content = comment.content;
     }
 
