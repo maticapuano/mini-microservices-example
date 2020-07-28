@@ -9,7 +9,7 @@ export default ({ comments }) => {
       content = comment.content;
     }
 
-    if (comment.type === "pending") {
+    if (comment.status === "pending") {
       content = "This comment is awaiting for moderation.";
     }
 
