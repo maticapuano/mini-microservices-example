@@ -15,7 +15,7 @@ app.get("/posts", (req, res) => {
   res.json(POSTS);
 });
 
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
   const id = uuid();
   const { title } = req.body;
 
